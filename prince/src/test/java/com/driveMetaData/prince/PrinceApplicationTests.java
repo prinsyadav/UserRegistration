@@ -1,10 +1,10 @@
-package com.driveMetaData.prince;
+package com.driveMetaData.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PrinceApplicationTests {
+class backendApplicationTests {
 
 	@Test
 	void contextLoads() {
