@@ -29,7 +29,6 @@ public class AppUser {
     @Column(name = "role")
     private List<String> roles = new ArrayList<>();
 
-    // Constructor for easier creation
     public AppUser(String username, String password, List<String> roles) {
         this.username = username;
         this.password = password;

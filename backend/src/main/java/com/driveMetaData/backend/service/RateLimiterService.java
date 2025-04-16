@@ -31,7 +31,7 @@ public class RateLimiterService {
 
     /**
      * Checks if a request from a client should be allowed based on rate limiting rules
-     * 
+     *
      * @param clientId The client identifier
      * @return true if the request is allowed, false otherwise
      */
@@ -39,7 +39,6 @@ public class RateLimiterService {
         String tokenKey = RATE_LIMIT_KEY_PREFIX + clientId + TOKENS_SUFFIX;
         String lastRefillKey = RATE_LIMIT_KEY_PREFIX + clientId + LAST_REFILL_TIME_SUFFIX;
 
-        // Get current token count or initialize if not exists
         Integer currentTokens = getCurrentTokenCount(tokenKey);
         
         // Get last refill time or initialize if not exists

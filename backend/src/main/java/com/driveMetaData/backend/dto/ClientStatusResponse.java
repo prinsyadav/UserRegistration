@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ClientStatusResponse { // For parsing Redis JSON
+public class ClientStatusResponse {
     private String status;
 }

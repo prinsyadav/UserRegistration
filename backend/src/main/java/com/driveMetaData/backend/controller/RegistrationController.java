@@ -47,7 +47,7 @@ public class RegistrationController {
         }
     }
 
-    // Endpoint to retrieve registered users for the frontend table
+    // retrieve registered users for the frontend table
     @GetMapping("/users")
     public ResponseEntity<?> getAllUsers() {
         // Security is already handled by JWT filter

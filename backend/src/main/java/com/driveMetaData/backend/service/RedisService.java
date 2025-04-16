@@ -16,7 +16,7 @@ import java.util.Optional;
 public class RedisService {
 
     private final StringRedisTemplate redisTemplate;
-    private final ObjectMapper objectMapper; // Inject Jackson ObjectMapper
+    private final ObjectMapper objectMapper;
 
     @Value("${app.redis.client-status-key-prefix}")
     private String clientStatusPrefix;
@@ -26,18 +26,16 @@ public class RedisService {
         try {
             String jsonValue = redisTemplate.opsForValue().get(key);
             if (jsonValue != null) {
-                // Parse the JSON string {"status": "active"}
                 ClientStatusResponse response = objectMapper.readValue(jsonValue, ClientStatusResponse.class);
                 return Optional.ofNullable(response.getStatus());
             }
         } catch (Exception e) {
             log.error("Error fetching or parsing client status from Redis for key {}: {}", key, e.getMessage());
-            // Decide how to handle parse errors - maybe treat as inactive?
         }
         return Optional.empty();
     }
 
-    // Method to set status (for testing/setup)
+    // Method to set status
     public void setClientStatus(String clientId, String statusJson) {
         String key = clientStatusPrefix + clientId;
         redisTemplate.opsForValue().set(key, statusJson);
