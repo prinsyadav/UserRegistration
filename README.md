@@ -96,7 +96,7 @@ This project implements a complete user registration system with a microservices
 3. Start the backend service:
 
    ```bash
-   cd prince
+   cd backend
    ./mvnw spring-boot:run
    ```
 
@@ -184,7 +184,7 @@ Authorization: Bearer {jwt-token}
 ### Backend Structure
 
 ```
-prince/
+backend/
 ├── config/ - Configuration classes (Kafka, Redis, Security)
 ├── controller/ - REST API endpoints
 ├── dto/ - Data transfer objects
@@ -211,7 +211,7 @@ frontend/
 Run backend tests with:
 
 ```bash
-cd prince
+cd backend
 ./mvnw test
 ```
 
