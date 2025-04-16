@@ -19,20 +19,19 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(IllegalStateException.class) // Catches the client status error
+    @ExceptionHandler(IllegalStateException.class)
     public ResponseEntity<Object> handleIllegalStateException(IllegalStateException ex) {
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.FORBIDDEN); // Or BAD_REQUEST depending on context
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.FORBIDDEN);
     }
 
-    @ExceptionHandler(ResponseStatusException.class) // Catches rate limiting error
+    @ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity<Object> handleResponseStatusException(ResponseStatusException ex) {
         return new ResponseEntity<>(ex.getReason(), ex.getStatusCode());
     }
 
 
-    @ExceptionHandler(Exception.class) // Catch-all for other unexpected errors
+    @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleAllExceptions(Exception ex) {
-        // Log the full exception stack trace here
         return new ResponseEntity<>("An unexpected error occurred.", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

@@ -17,19 +17,27 @@ public class RegistrationConsumer {
 
     private final RegistrationService registrationService;
 
-    @KafkaListener(topics = "${app.kafka.topic.registration}", groupId = "${spring.kafka.consumer.group-id}")
+    @KafkaListener(
+            topics = "${app.kafka.topic.registration}",
+            groupId = "${spring.kafka.consumer.group-id}",
+            containerFactory = "registrationKafkaListenerContainerFactory"
+    )
     public void listenRegistrationTopic(
             @Payload RegistrationRequest message,
-            @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition,
-            @Header(KafkaHeaders.OFFSET) long offset) {
+            @Header(name = KafkaHeaders.RECEIVED_PARTITION, required = false) Integer partition,
+            @Header(name = KafkaHeaders.OFFSET, required = false) Long offset) {
 
-        log.info("Received message from Kafka partition {}:{} - {}", partition, offset, message);
+        log.info("Received message from Kafka partition {}:{} - {}",
+                partition != null ? partition : "N/A",
+                offset != null ? offset : "N/A",
+                message);
         try {
             registrationService.saveRegistration(message);
         } catch (Exception e) {
-            // Handle exceptions during processing
-            log.error("Error processing message from partition {}:{} - {}", partition, offset, e.getMessage(), e);
-            // Implement error handling strategy (e.g., DLQ, logging)
+            log.error("Error processing message from partition {}:{} - {}",
+                    partition != null ? partition : "N/A",
+                    offset != null ? offset : "N/A",
+                    e.getMessage(), e);
         }
     }
 }

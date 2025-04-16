@@ -27,7 +27,7 @@ public class RegistrationService {
 
         if ("active".equalsIgnoreCase(clientStatus)) {
             // Status is active, queue to Kafka
-            kafkaProducerService.sendRegistrationMessage(request);
+            kafkaProducerService.sendMessage(request);
             log.info("Queued registration request for Client_id {}", clientId);
         } else {
             // Status is not active, reject the request
