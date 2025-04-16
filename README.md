@@ -21,8 +21,7 @@ This project implements a complete user registration system with a microservices
 
 ## Architecture
 
-![Architecture Diagram]
-Path: architecture.svg
+![Architecture Diagram](ProjectArchitecture.svg)
 
 ### Components
 
