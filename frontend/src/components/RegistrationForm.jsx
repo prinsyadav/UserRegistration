@@ -69,7 +69,6 @@ function RegistrationForm({ onSubmissionResult }) {
       setErrors({ ...errors, [name]: "" });
     }
 
-    // Set animation for field being edited
     setAnimateField(name);
   };
 

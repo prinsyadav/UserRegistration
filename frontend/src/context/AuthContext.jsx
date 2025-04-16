@@ -8,12 +8,10 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // Check if user has a token on app load
     const token = localStorage.getItem("jwtToken");
     if (token) {
       setIsAuthenticated(true);
-      // You could decode the JWT here to get the username
-      setUser({ username: "User" }); // Default or decode from token
+      setUser({ username: "User" });
     }
     setIsLoading(false);
   }, []);

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/v1"; // Your Spring Boot backend URL
+const API_URL = "http://localhost:8080/api/v1";
 
 // Function to get the JWT token
 const getToken = () => localStorage.getItem("jwtToken");

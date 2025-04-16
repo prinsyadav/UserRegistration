@@ -71,7 +71,7 @@ function UserTable() {
       });
       setFilteredUsers(filtered);
     }
-    setPage(0); // Reset to first page on search
+    setPage(0);
   }, [searchTerm, users]);
 
   const handleChangePage = (event, newPage) => {
@@ -96,7 +96,6 @@ function UserTable() {
 
   const sortData = (data) => {
     return data.sort((a, b) => {
-      // Handle string vs number comparisons
       const aValue = a[orderBy];
       const bValue = b[orderBy];
 
